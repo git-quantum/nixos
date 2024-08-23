@@ -8,9 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hosts/laptops/system76/hardware-configuration.nix
-      ./modules/nixos/common.nix
-      ./modules/nixos/nvidia.nix
+      ./modules/nixos/
     ];
+
+  # Gaming mode
+  custom.gamingMode.enable = true;
+
+  # GPU
+  custom.gpu.mode = "nvidia";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -58,28 +63,6 @@
   };
      
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hopaq = {
     isNormalUser = true;
@@ -101,23 +84,6 @@
     #  thunderbird
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-	helix
-  freshfetch
-  git
-  tree
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -148,34 +114,5 @@
 
   # Disable password for Wheel usergroup
   security.sudo.wheelNeedsPassword = false;
-
-  # Zram
-  zramSwap.enable = true;
-
-  # SSD optimization
-  services.fstrim.enable = true;
-
-  # System76
-  hardware.system76.enableAll = true;
-  ## Disable other power-profile to let system76-power start
-  services.power-profiles-daemon.enable = false;
-
-  # Nvidia
-  #hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-  };
-
-  # Steam
-  ## Enable 32bit Support for application 
-  hardware.opengl.driSupport32Bit = true;
-
-  # Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Disable mouse acceleration
-  services.libinput.mouse.accelProfile = "flat";
 
 }
