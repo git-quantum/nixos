@@ -16,6 +16,7 @@
 
     # Goverlay / Lutris / Bottles
     environment.systemPackages = with pkgs; [
+      discord
       goverlay
       lutris
       bottles

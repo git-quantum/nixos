@@ -35,7 +35,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     discord
-    vim
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
