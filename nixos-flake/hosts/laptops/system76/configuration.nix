@@ -61,18 +61,6 @@
     layout = "us";
     variant = "alt-intl";
   };
-     
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.hopaq = {
-    isNormalUser = true;
-    description = "Hopaq";
-    ## User must take part of the 'adm' group for system76 hardware
-    extraGroups = [ "networkmanager" "wheel" "adm" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
   
   users.users.quantum = {
     isNormalUser = true;
