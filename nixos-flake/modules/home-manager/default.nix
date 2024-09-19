@@ -1,7 +1,6 @@
 {
   imports = [
-    ./shell/
-    ./gaming/
-    ./shell/
+    ./dev
+    ./shell
   ];
 }
