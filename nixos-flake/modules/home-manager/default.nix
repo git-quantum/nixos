@@ -1,6 +1,6 @@
 {
   imports = [
     ./dev
-    ./shell
+    ./shells
   ];
 }
