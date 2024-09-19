@@ -20,6 +20,7 @@
       goverlay
       lutris
       bottles
+      
     ];
 
     # Gamemode
