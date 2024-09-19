@@ -1,10 +1,10 @@
 {
-  program.enable.helix = true;
+  programs.helix.enable = true;
   
   programs.helix.settings = {
-    theme = "catppuccin_mocha_transparent";
+    theme = "catppuccin_mocha";
     editor = {
-      line-numer = "relative";
+      line-number = "relative";
       mouse = true;
       middle-click-paste = true;
       auto-completion = true;
