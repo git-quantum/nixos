@@ -7,8 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hosts/laptops/system76/hardware-configuration.nix
-      ./modules/nixos/
+      ./hardware-configuration.nix
+      ../../../modules/nixos
     ];
 
   # Gaming mode

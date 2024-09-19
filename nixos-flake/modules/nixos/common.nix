@@ -5,7 +5,7 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alse.support32Bit = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
   };
   
@@ -13,7 +13,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Enable CUPS for printing
-  services.priting.enable = true;
+  services.printing.enable = true;
   
   # Enable Zram
   zramSwap.enable = true;
@@ -22,7 +22,11 @@
   services.fstrim.enable = true;
 
   # Enable 32bits support applications
-  hardware.opengl.driSupport32bit = true;
+  ## nixpkg 24.04
+  #hardware.opengl.driSupport32bit = true;
+
+  ## nixpkg-unstable
+  hardware.graphics.enable32Bit = true;
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -17,8 +17,7 @@
   {
     # Nixos system    
     nixosConfiguration = {
-      laptop-system76 = {
-        lib.nixosSystem = {
+      laptop-system76 = lib.nixosSystem = {
           inherit system ;
           modules = [ ./hosts/laptops/system76/configuration.nix ];
         };
@@ -27,7 +26,7 @@
 
     # Home-manager
     homemanager.Configurations = {
-      quantum = home-manager.lib.homeManagerConfiguration {
+      quantum = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./hosts/laptops/system76/home.nix ];
       };
