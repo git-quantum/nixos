@@ -13,7 +13,7 @@
     (lib.mkIf (config.custom.gpu.mode == "nvidia") {
       services.xserver.videoDrivers = [ "nvidia" ];
       hardware.nvidia = {
-	open = false;
+	      open = false;
         modesetting.enable = true;
         nvidiaSettings = true;
       };
