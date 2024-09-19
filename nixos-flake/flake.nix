@@ -24,7 +24,7 @@
     };
 
     # Home-manager
-    homemanager.Configurations = {
+    homeConfigurations = {
       quantum = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./hosts/laptops/system76/home.nix ];
