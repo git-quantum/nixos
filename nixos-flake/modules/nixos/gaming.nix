@@ -11,7 +11,7 @@
     # Setup Steam with gamescope session
     programs.steam = {
       enable = true;
-      gamescopeSession = true;
+      #gamescopeSession = [];
     };
 
     # Goverlay / Lutris / Bottles
