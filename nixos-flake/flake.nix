@@ -16,8 +16,8 @@
   in
   {
     # Nixos system    
-    nixosConfiguration = {
-      laptop-system76 = lib.nixosSystem = {
+    nixosConfigurations = {
+      laptop-system76 = lib.nixosSystem {
           inherit system ;
           modules = [ ./hosts/laptops/system76/configuration.nix ];
       };
