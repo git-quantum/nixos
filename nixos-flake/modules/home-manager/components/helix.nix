@@ -29,7 +29,7 @@
         hidden = false;
       };
 
-      ident-guides = {
+      indent-guides = {
         character = "╎";
         render = true;
       };
