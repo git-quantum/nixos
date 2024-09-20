@@ -1,8 +1,8 @@
 {
   imports = [
-    ./common.nix
-    ./packages.nix
-    ./gpu.nix
-    ./gaming.nix
+    ./components/common.nix
+    ./components/packages.nix
+    ./components/gpu.nix
+    ./components/gaming.nix
   ];
 }

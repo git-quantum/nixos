@@ -1,6 +1,6 @@
 {
   imports = [
-    ./dev
-    ./shells
+    ./components/dev.nix
+    ./components/helix.nix
   ];
 }
