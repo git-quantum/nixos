@@ -2,7 +2,7 @@
   
   options = {
     custom.gpu.mode = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.enum[ "amd" "nvidia" ];
       description = " Choose whether to use 'amd' or 'nvidia' for GPU setup.";
       default = "amd";
     };
