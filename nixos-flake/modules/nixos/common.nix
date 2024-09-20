@@ -1,4 +1,4 @@
-{
+{ pkgs, ...}: {
   # Enable sound with Pipewire
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -33,4 +33,10 @@
 
   # Disable mouse acceleration
   services.libinput.mouse.accelProfile = "flat";
+
+  # Set zsh shell by default
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+
 }
