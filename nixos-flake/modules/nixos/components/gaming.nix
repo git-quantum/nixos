@@ -25,7 +25,7 @@
     environment = {
       systemPackages = pkgs.mangohud;
       loginShellInit = ''
-        [[ "$(tty)" = "/dev/tty1" ]] && ./gs.sh
+        [[ "$(tty)" = "/dev/tty1" ]] && ~/.config/hm-modules/gaming/gs.sh
       '';
     };
     
