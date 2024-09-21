@@ -1,4 +1,5 @@
-{ pkgs, lib, config, ...}: {
+{ pkgs, lib, config, ...}: 
+{
   options = {
     custom.gamingMode.enable = lib.mkOption{
       type = lib.types.bool;      
@@ -19,23 +20,24 @@
         enable = true;
         gamescopeSession.enable = true;
       };
+    };
       
     hardware.xone.enable = true; # support for the xbox controller USB dongle
-    
+            
+    # Goverlay / Lutris / Bottles
     environment = {
-      systemPackages = pkgs.mangohud;
+      systemPackages = with pkgs; [
+        discord
+        goverlay
+        lutris
+        bottles
+      ];
+
+      # Gamescope optimization script   
       loginShellInit = ''
         [[ "$(tty)" = "/dev/tty1" ]] && ~/.config/hm-modules/gaming/gs.sh
       '';
     };
-    
-    # Goverlay / Lutris / Bottles
-    environment.systemPackages = with pkgs; [
-      discord
-      goverlay
-      lutris
-      bottles
-    ];
 
     # Gamemode
     programs.gamemode.enable = true;  
