@@ -5,14 +5,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../../modules/nixos
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../../modules/nixos
+  ];
 
   # Gaming mode
-  custom.gamingMode.enable = true;
+  custom.gamingMode.enable = false;
 
   # GPU
   custom.gpu.mode = "nvidia";
@@ -57,20 +56,21 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb  = {
+  services.xserver.xkb = {
     layout = "us";
     variant = "alt-intl";
   };
-  
+
   users.users.quantum = {
     isNormalUser = true;
     description = "Quantum";
     home = "/home/quantum";
     ## User must take part of the 'adm' group for system76 hardware
     extraGroups = [ "networkmanager" "wheel" "adm" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        #  thunderbird
+      ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
