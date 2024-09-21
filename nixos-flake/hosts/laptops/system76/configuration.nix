@@ -11,7 +11,7 @@
   ];
 
   # Gaming mode
-  custom.gamingMode.enable = false;
+  custom.gamingMode.enable = true;
 
   # GPU
   custom.gpu.mode = "nvidia";
