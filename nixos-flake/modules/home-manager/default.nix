@@ -1,6 +1,6 @@
 {
   imports = [
     ./components/common
-    ./components/gaming
+    ./components/gaming/optimizeSteam.nix
   ];
 }
