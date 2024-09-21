@@ -1,12 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let 
+    # Add script's location to Nixos managed paths
+    gsScriptPath = builtins.path {
+      name = "gs.sh";
+      path = ./../../scripts/gs.sh;
+    };
 
-# Ensure gs.sh is created if gamingMode on
-let
-    # Check if Steam is installed on the system
-    steamInstalled = builtins.exec "which steam" == 0;
-
+    # Check if Steam is installed on system
+    isSteamInstalled = lib.mkIf (lib.elem pkgs.steam (config.environment.systemPackages or []));
+   
 in
 {
-    # Create the .sh if steam is installed
-    home.file."${config.home.homeDirectory}/.config/hm-modules/gaming//gs.sh".text = if steamInstalled then builtins.readFile ../scripts/gs.sh;
+    # Copy script in target locations if Steam installed
+    home.file = isSteamInstalled {
+        "gs.sh" = {
+            source = gsScriptPath;
+            target = ".config/hm-modules/gaming/gs.sh";
+            executable = true;
+        };
+    };
 }
