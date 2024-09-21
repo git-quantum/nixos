@@ -7,16 +7,16 @@ let
     };
 
     # Check if Steam is installed on system
-    isSteamInstalled = builtins.elem "${pkgs.steam}" (config.environment.systemPackages or []);
+    isSteamInstalled = lib.mkIf (builtins.elem pkgs.steam (config.environment.systemPackages or []));
    
 in
 {
     # Copy script in target locations if Steam installed
-    home.file = if isSteamInstalled then {
+    home.file = isSteamInstalled {
         "gs.sh" = {
             source = gsScriptPath;
             target = ".config/hm-modules/gaming/gs.sh";
             executable = true;
         };
-    } else {};
+    };
 }
