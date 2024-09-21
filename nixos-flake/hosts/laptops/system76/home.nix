@@ -4,12 +4,16 @@
 
   imports = [
     ../../../modules/home-manager
+    ../../../modules/home-manager/scripts/check_bin.nix
   ];
+  
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "quantum";
   home.homeDirectory = "/home/quantum";
 
+
+  pkgChecker.pkgName = "steam";
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
