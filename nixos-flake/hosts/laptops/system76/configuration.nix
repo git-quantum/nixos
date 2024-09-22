@@ -69,7 +69,6 @@
     isNormalUser = true;
     description = "Quantum";
     home = "/home/quantum";
-    ## User must take part of the 'adm' group for system76 hardware
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
