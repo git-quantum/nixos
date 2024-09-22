@@ -4,6 +4,6 @@
     ./components/packages.nix
     ./components/gpu.nix
     ./components/gaming.nix
-    #./components/zsh.nix
+    ./components/system76.nix
   ];
 }
