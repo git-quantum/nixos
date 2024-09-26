@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -xeuo pipefail
 
 gamescopeArgs=(
@@ -8,15 +8,16 @@ gamescopeArgs=(
     --rt
     --steam
 )
-steamArgs=(
-    -pipewire-dmabuf
-    -tenfoot
-)
+# steamArgs=(
+#     -pipewire-dmabuf
+#     -tenfoot
+# )
 mangoConfig=(
     cpu_temp
     gpu_temp
     ram
     vram
+    gamemode
 )
 mangoVars=(
     MANGOHUD=1
@@ -24,4 +25,5 @@ mangoVars=(
 )
 
 export "${mangoVars[@]}"
-exec gamescope "${gamescopeArgs[@]}" -- steam "${steamArgs[@]}"
+#exec gamescope "${gamescopeArgs[@]}" -- steam "${steamArgs[@]}"
+exec gamescope "${gamescopeArgs[@]}" -- gamemoderun steam
