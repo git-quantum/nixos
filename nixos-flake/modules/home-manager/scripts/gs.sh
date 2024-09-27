@@ -6,7 +6,7 @@ gamescopeArgs=(
     --hdr-enabled
     --mangoapp # performance overlay
     --rt
-    --steam
+    #--steam
 )
 # steamArgs=(
 #     -pipewire-dmabuf
