@@ -8,17 +8,17 @@
   };
 
   config = lib.mkIf config.custom.gamingMode.enable {
-    # Setup Steam with gamescope session
+    hardware.xone.enable = true; # support for the xbox controller USB dongle
+    
     programs = {
       steam = {
         enable = true;
         gamescopeSession.enable = true;
       };
+
+      gamemode.enable = true;
     };
 
-    hardware.xone.enable = true; # support for the xbox controller USB dongle
-
-    # Goverlay / Lutris / Bottles
     environment = {
       systemPackages = with pkgs; [ 
         discord 
@@ -28,8 +28,5 @@
         bottles 
       ];
     };
-
-    # Gamemode
-    programs.gamemode.enable = true;
   };
 }
