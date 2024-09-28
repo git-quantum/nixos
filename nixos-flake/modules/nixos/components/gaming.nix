@@ -10,11 +10,6 @@
   config = lib.mkIf config.custom.gamingMode.enable {
     # Setup Steam with gamescope session
     programs = {
-      gamescope = {
-        enable = true;
-        capSysNice = true;
-      };
-
       steam = {
         enable = true;
         gamescopeSession.enable = true;
@@ -25,13 +20,13 @@
 
     # Goverlay / Lutris / Bottles
     environment = {
-      systemPackages = with pkgs; [ discord goverlay mangohud lutris bottles ];
-
-      # Gamescope optimization scripts
-
-      # loginShellInit = ''
-      #   [[ "$(tty)" = "/dev/tty1" ]] && zsh ~/.config/hm-modules/gaming/gs.sh
-      # '';
+      systemPackages = with pkgs; [ 
+        discord 
+        goverlay 
+        mangohud
+        lutris
+        bottles 
+      ];
     };
 
     # Gamemode
