@@ -8,6 +8,19 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../../modules/nixos
+    
+    ../../../modules/nixos/core/bootloader
+    ../../../modules/nixos/core/network
+    ../../../modules/nixos/core/timezone
+    ../../../modules/nixos/core/locales
+    ../../../modules/nixos/core/keyboard
+    ../../../modules/nixos/core/security
+
+    ../../../modules/nixos/optional/desktop
+    ../../../modules/nixos/optional/printing
+    ../../../modules/nixos/optional/sound
+
+
   ];
 
   # Gaming mode
@@ -16,54 +29,7 @@
   # GPU
   custom.gpu.mode = "nvidia";
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "laptop-system76"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Enable the COSMIC Desktop Environment.
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "alt-intl";
-  };
 
   users.users.quantum = {
     isNormalUser = true;
