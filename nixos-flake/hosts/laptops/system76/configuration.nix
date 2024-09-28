@@ -8,14 +8,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../../modules/nixos
+    ../../../modules/core
     
-    ../../../modules/nixos/core/bootloader
-    ../../../modules/nixos/core/network
-    ../../../modules/nixos/core/timezone
-    ../../../modules/nixos/core/locales
-    ../../../modules/nixos/core/keyboard
-    ../../../modules/nixos/core/security
-
     ../../../modules/nixos/optional/desktop
     ../../../modules/nixos/optional/printing
     ../../../modules/nixos/optional/sound
@@ -67,7 +61,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+   # Did you read the comment?
 
   # Disable password for Wheel usergroup
   security.sudo.wheelNeedsPassword = false;
