@@ -6,6 +6,7 @@
     ./network
     ./nix
     ./security
+    ./shell
     ./stateVersion
     ./timezone
   ];
