@@ -1,6 +1,6 @@
 {
   imports = [
-    ./components/common
-    ./components/gaming
+    ./configuration/editors
+    ./configuration/shell
   ];
 }
