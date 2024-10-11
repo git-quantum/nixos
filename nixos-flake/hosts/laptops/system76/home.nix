@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, modulesPath, ... }:
 
 {
 
   imports = [ 
-    ../../../modules/home-manager
+    modulesPath
+    # ../../../modules/home-manager/configuration
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
