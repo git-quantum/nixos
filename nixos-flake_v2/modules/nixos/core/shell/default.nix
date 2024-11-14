@@ -1,3 +1,4 @@
+{pkgs, ...}:
 {
   # Set zsh shell by default
   environment.shells = with pkgs; [ zsh ];

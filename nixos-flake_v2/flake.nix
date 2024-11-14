@@ -16,9 +16,9 @@
         system = "x86_64-linux";
         hostname = "hortus";
         profile = "laptop-system76"; # A profile defined from the profile directory
-        profilePath = builtins.toString ./profiles/${profile};
+        profilePath = ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
-#        systemModulesPath = builtins.toString ./modules/nixos;
+        systemModulesPath = ./modules/nixos;
 
       };
 
@@ -30,7 +30,7 @@
         theme = "";
         font = "";
         editor = "";
-#        userModulesPath = builtins.toString ./modules/home-manager/configuration;
+        userModulesPath = ./modules/home-manager/configuration;
         wm = "";
         desktop = "kdew"; # A desktop defined from the desktop directory
       };
@@ -46,14 +46,14 @@
 
       # Nixos system    
       nixosConfigurations = {
-        hortus = lib.nixosSystem {
+        ${systemSettings.hostname} = lib.nixosSystem {
           system = systemSettings.system;
-          
           modules = [
             #./hosts/laptops/system76/configuration.nix
+            ./profiles/${systemSettings.profile}/configuration.nix
             # Debug profilePath pour s'assurer qu'il est relatif
-            (builtins.trace "Importing configuration from: ${systemSettings.profilePath}/configuration.nix"
-            import "${systemSettings.profilePath}/configuration.nix")
+            #(builtins.trace "Importing configuration from: '${systemSettings.profilePath}/configuration.nix'"
+            #import "${systemSettings.profilePath}/configuration.nix")
           ];
           
           specialArgs = {
@@ -67,11 +67,11 @@
 
       # Home-manager
       homeConfigurations = {
-        userSettings.username = inputs.home-manager.lib.homeManagerConfiguration {
+        ${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ 
-	    #./hosts/laptops/system76/home.nix 
-            ./systemSettings.profilePath/home.nix
+	    ./hosts/laptops/system76/home.nix 
+            #./systemSettings.profilePath/home.nix
 	  ];
         };
       };

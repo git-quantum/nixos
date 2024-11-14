@@ -5,7 +5,7 @@
     ./locales
     ./network
     ./nix
-    ./packages.nix
+    ./packages
     ./security
     ./shell
     ./stateVersion
