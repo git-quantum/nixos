@@ -9,50 +9,53 @@
       "nixpkgs"; # Override nixpkgs input from HM Flakes, to be sync with our nixpkgs defined above
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+ outputs = { self, nixpkgs, ... }@inputs:
     let
       ########## SYSTEM
-      systemSettings = {
+      systemSettings = rec {
         system = "x86_64-linux";
         hostname = "hortus";
         profile = "laptop-system76"; # A profile defined from the profile directory
-        profilePath = builtins.toPath ./profiles/${profile};
+        profilePath = ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
 
       };
 
       ########### USER
-      userSettings = {
+      userSettings = rec {
         username = "hoaq";
         mail = "quentinhr@pm.me";
         dotfilesDir = /home/${username}/.config;
         theme = "";
         font = "";
         editor = "";
-        userModulesPath = ../../../modules/home-manager/configuration;
-        systemModulesPath = ../../../modules/nixos;
+        #userModulesPath = ./modules/home-manager/configuration;
+        #systemModulesPath = ./modules/nixos;
         wm = "";
         desktop = "kdew"; # A desktop defined from the desktop directory
       };
 
 
       pkgs =
-        nixpkgs.legacyPackages.${system}; # Mandatory argument now: https://nix-community.github.io/home-manager/release-notes.xhtml#sec-release-22.11-highlights
+        nixpkgs.legacyPackages.${systemSettings.system}; # Mandatory argument now: https://nix-community.github.io/home-manager/release-notes.xhtml#sec-release-22.11-highlights
       lib = nixpkgs.lib;
 
     in {
+      
+      systemHostname = systemSettings.hostname;
+
       # Nixos system    
       nixosConfigurations = {
-        systemSettings.hostname = lib.nixosSystem {
+        hortus = lib.nixosSystem {
           system = systemSettings.system;
           
           modules = [
             #./hosts/laptops/system76/configuration.nix
-            ./systemSettings.profilePath/configuration.nix
+           (import "${systemSettings.profilePath}/configuration.nix")
           ];
           
           specialArgs = {
-            inherit inputs nixosModulesPath;
+            inherit inputs;
             inherit systemSettings;
             inherit userSettings;
 
