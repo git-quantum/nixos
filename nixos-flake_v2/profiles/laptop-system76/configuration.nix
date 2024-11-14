@@ -20,10 +20,10 @@
   # GPU
   custom.gpu.mode = "nvidia";
 
-  users.users.quantum = {
+  users.users.hoaq = {
     isNormalUser = true;
-    description = "Quantum";
-    home = "/home/quantum";
+    description = "Hoaq";
+    home = "/home/hoaq";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [

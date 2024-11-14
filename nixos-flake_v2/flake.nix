@@ -16,8 +16,9 @@
         system = "x86_64-linux";
         hostname = "hortus";
         profile = "laptop-system76"; # A profile defined from the profile directory
-        profilePath = ./profiles/${profile};
+        profilePath = builtins.toString ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
+#        systemModulesPath = builtins.toString ./modules/nixos;
 
       };
 
@@ -29,8 +30,7 @@
         theme = "";
         font = "";
         editor = "";
-        #userModulesPath = ./modules/home-manager/configuration;
-        #systemModulesPath = ./modules/nixos;
+#        userModulesPath = builtins.toString ./modules/home-manager/configuration;
         wm = "";
         desktop = "kdew"; # A desktop defined from the desktop directory
       };
@@ -51,7 +51,9 @@
           
           modules = [
             #./hosts/laptops/system76/configuration.nix
-           (import "${systemSettings.profilePath}/configuration.nix")
+            # Debug profilePath pour s'assurer qu'il est relatif
+            (builtins.trace "Importing configuration from: ${systemSettings.profilePath}/configuration.nix"
+            import "${systemSettings.profilePath}/configuration.nix")
           ];
           
           specialArgs = {
