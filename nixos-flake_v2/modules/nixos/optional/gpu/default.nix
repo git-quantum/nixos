@@ -2,7 +2,7 @@
 let
   currentNixosVersion = builtins.substring 0 5 ((import <nixos> {}).lib.version);
   nixosVersionNewerThan24_11 = lib.strings.versionAtLeast currentNixosVersion "24.11";
-  nixosVersionOlderThan24_11 = !nixosVersionNewerThan24_11
+  nixosVersionOlderThan24_11 = !nixosVersionNewerThan24_11;
 
 in
 {
@@ -47,7 +47,7 @@ in
       #     rocmPackages.clr.icd
       #   ];
       # };
-    }
+    };
 
     # Setup graphic acceleration based on NixOS version
     hardware = lib.mkIf nixosVersionNewerThan24_11 {
