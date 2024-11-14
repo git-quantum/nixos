@@ -47,7 +47,7 @@ in
       #     rocmPackages.clr.icd
       #   ];
       # };
-    };
+    });
 
     # Setup graphic acceleration based on NixOS version
     hardware = lib.mkIf nixosVersionNewerThan24_11 {
