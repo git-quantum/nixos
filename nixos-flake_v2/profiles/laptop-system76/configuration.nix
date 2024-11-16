@@ -6,7 +6,7 @@
 
 
     ../../modules/nixos/optional/desktop
-    ../../modules/nixos/optional/gpu
+    ../../modules/nixos/optional/gpu2
     ../../modules/nixos/optional/mouse
     ../../modules/nixos/optional/printing
     ../../modules/nixos/optional/sound

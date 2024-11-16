@@ -1,4 +1,4 @@
-{lib, config, ...}: 
+{pkgs, lib, config, ...}: 
 let
   currentNixosVersion = builtins.substring 0 5 ((import <nixos> {}).lib.version);
   nixosVersionNewerThan24_11 = lib.strings.versionAtLeast currentNixosVersion "24.11";
@@ -31,9 +31,9 @@ in
       services.xserver.videoDrivers = [ "amdgpu" ];
 
       hardware = if nixosVersionNewerThan24_11 then {
-        graphics.extraPackages = [ rocmPackages.clr.icd ];
+        graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
       } else {
-        opengl.extraPackages = [ rocmPackages.clr.icd ];
+        opengl.extraPackages = [ pkgs.rocmPackages.clr.icd ];
       };
 
       # hardware.graphics.extraPackages = lib.mkIf nixosVersionNewerThan24_11 {
@@ -47,17 +47,17 @@ in
       #     rocmPackages.clr.icd
       #   ];
       # };
-    });
+    })
 
     # Setup graphic acceleration based on NixOS version
-    hardware = lib.mkIf nixosVersionNewerThan24_11 {
+    (hardware = lib.mkIf nixosVersionNewerThan24_11 {
       graphics.enable = true;
       graphics.enable32Bit = true;
     } // lib.mkIf nixosVersionOlderThan24_11 {
       opengl.enable = true;
       opengl.driSupport = true;
       opengl.driSupport32bit = true;
-    };
+    })
 
     # # Setup graphic acceleration for version 24.11 or newer
     # (lib.mkIf nixosVersionNewerThan24_11 {
