@@ -1,10 +1,10 @@
-{pkgs, lib, config, gpuType, ...}: 
+{pkgs, lib, config, userSettings, systemSettings, ...}: 
 let
   currentNixosVersion = builtins.substring 0 5 ((import <nixos> {}).lib.version);
   nixosVersionNewerThan24_11 = lib.strings.versionAtLeast currentNixosVersion "24.11";
   nixosVersionOlderThan24_11 = !nixosVersionNewerThan24_11;
 
-  gpuConfig = if gpuType == "nvidia" then {
+  gpuConfig = if systemSettings.gpuType == "nvidia" then {
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
       open = false;
@@ -23,7 +23,7 @@ let
     opengl.enable = true;
     opengl.driSupport = true;
     opengl.driSupport32bit = true;
-  };
+  } else {};
 
 in
 {
@@ -31,4 +31,4 @@ in
     gpuConfig
     graphicAccelerationConfig
   ];
-};
+}

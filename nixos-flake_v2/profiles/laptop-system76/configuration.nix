@@ -19,7 +19,7 @@
   custom.gamingMode.enable = true;
 
   # GPU
-  custom.gpu.mode = "nvidia";
+  #custom.gpu.mode = "nvidia";
 
   users.users.${userSettings.username} = {
     isNormalUser = true;
