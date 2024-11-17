@@ -4,8 +4,8 @@
     #import "${systemSettings.systemModulesPath}/core"
     ../../modules/nixos/core
 
-
     ../../modules/nixos/optional/desktop
+    ../../modules/nixos/optional/gaming
     ../../modules/nixos/optional/gpu2
     ../../modules/nixos/optional/mouse
     ../../modules/nixos/optional/printing

@@ -16,10 +16,10 @@ let
     hardware.amdgpu.opencl.enable = true;
   };
 
-  graphicAccelerationConfig = if nixosVersionNewerThan24_11 then{
+  graphicAccelerationConfig = if systemSettings.nixosVersion >= "2411" then{
     graphics.enable = true;
     graphics.enable32Bit = true;  
-  } else if nixosVersionOlderThan24_11 then {
+  } else if systemSettings.nixosVersion <= "2405" then {
     opengl.enable = true;
     opengl.driSupport = true;
     opengl.driSupport32bit = true;

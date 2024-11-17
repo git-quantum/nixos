@@ -13,6 +13,7 @@
     let
       ########## SYSTEM
       systemSettings = rec {
+        nixosVersion = "2405";
         system = "x86_64-linux";
         hostname = "hortus";
         profile = "laptop-system76"; # A profile defined from the profile directory
