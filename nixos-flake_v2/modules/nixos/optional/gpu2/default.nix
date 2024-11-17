@@ -6,10 +6,10 @@ let
 
   gpuConfig = if systemSettings.gpuType == "nvidia" then {
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.nvidia = {
+    nvidia = {
       open = false;
-      modesettings.enable = true;
-      nvidia.setting = true;
+      modesetting.enable = true;
+      nvidiaSettings = true;
     };
   } else {
     services.xserver.videoDrivers = [ "amdgpu" ];
@@ -22,7 +22,7 @@ let
   } else if systemSettings.nixosVersion <= "2405" then {
     opengl.enable = true;
     opengl.driSupport = true;
-    opengl.driSupport32bit = true;
+    opengl.driSupport32Bit = true;
   } else {};
 
 in
