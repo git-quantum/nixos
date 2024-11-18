@@ -1,14 +1,14 @@
 {
   services = {
+      # KDE
+      displayManager.sddm.enable = false;
+      desktopManager.plasma6.enable = false;
+      
     xserver = {
       enable = true;
       # Gnome
-      displayManager.gdm.enable = false;
-      desktopManager.gnome.enable = false;
-  
-      # KDE
-      displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
   };
 }
