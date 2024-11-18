@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
-  
+
     settings = {
-      theme = "catppuccin_mocha";
+      theme = "solarized_dark";
       editor = {
         line-number = "relative";
         mouse = true;
@@ -13,18 +12,16 @@
         color-modes = true;
         bufferline = "multiple";
         cursorline = true;
-        rulers = [120];
+        rulers = [ 120 ];
         true-color = true;
-        
+
         cursor-shape = {
           insert = "bar";
           normal = "block";
           select = "underline";
         };
-        
-        file-picker = {
-          hidden = false;
-        };
+
+        file-picker = { hidden = false; };
 
         indent-guides = {
           character = "╎";
@@ -42,8 +39,8 @@
           left = [ "mode" "spinner" "version-control" "file-name" ];
         };
       };
-    };  
-  
+    };
+
     languages.language = [{
       name = "nix";
       auto-format = true;
