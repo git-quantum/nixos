@@ -3,8 +3,8 @@
 {
 
   imports = [ 
-    "${userSettings.userModulesPath}"
-    # ../../../modules/home-manager/configuration
+    # "${userSettings.userModulesPath}"
+    ../../modules/home-manager/configuration
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

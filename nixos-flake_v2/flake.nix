@@ -67,15 +67,15 @@
         };
       };
 
-      # # Home-manager
-      # homeConfigurations = {
-      #   ${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     modules = [ 
-	     #      # ./hosts/laptops/system76/home.nix 
-      #       "${systemSettings.profilePath}/home.nix"
-	     #    ];
-      #   };
-      # };
+      # Home-manager
+      homeConfigurations = {
+        ${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ 
+	          # ./hosts/laptops/system76/home.nix 
+            "${systemSettings.profilePath}/home.nix"
+	        ];
+        };
+      };
     };
 }
