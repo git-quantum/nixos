@@ -4,16 +4,28 @@ let
   nixosVersionNewerThan24_11 = lib.strings.versionAtLeast currentNixosVersion "24.11";
   nixosVersionOlderThan24_11 = !nixosVersionNewerThan24_11;
 
+  
+
   gpuConfig = if systemSettings.gpuType == "nvidia" then {
-    services.xserver.videoDrivers = [ "nvidia" ];
-    nvidia = {
-      open = false;
-      modesetting.enable = true;
-      nvidiaSettings = true;
+    serviceConfig = { 
+      xserver.videoDrivers = [ "nvidia" ]; 
+    };
+
+    hardwareConfig = {
+      nvidia = {
+        open = false;
+        modesetting.enable = true;
+        nvidiaSettings = true;
+      };
     };
   } else {
-    services.xserver.videoDrivers = [ "amdgpu" ];
-    hardware.amdgpu.opencl.enable = true;
+    serviceConfig = {
+      xserver.videoDrivers = [ "amdgpu" ];
+    };
+    
+    hardwareConfig = { 
+      amdgpu.opencl.enable = true; 
+    };
   };
 
   graphicAccelerationConfig = if systemSettings.nixosVersion >= "2411" then{
@@ -28,7 +40,11 @@ let
 in
 {
   hardware = lib.mkMerge [
-    gpuConfig
+    gpuConfig.hardwareConfig
     graphicAccelerationConfig
+  ];
+
+  services = lib.mkMerge [
+    gpuConfig.serviceConfig
   ];
 }
