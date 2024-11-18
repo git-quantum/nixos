@@ -51,7 +51,8 @@
           system = systemSettings.system;
           modules = [
             #./hosts/laptops/system76/configuration.nix
-            ./profiles/${systemSettings.profile}/configuration.nix
+            #./profiles/${systemSettings.profile}/configuration.nix
+            "${systemSettings.profilePath}/configuration.nix"
             # Debug profilePath pour s'assurer qu'il est relatif
             #(builtins.trace "Importing configuration from: '${systemSettings.profilePath}/configuration.nix'"
             #import "${systemSettings.profilePath}/configuration.nix")

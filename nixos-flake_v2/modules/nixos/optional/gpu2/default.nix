@@ -33,7 +33,7 @@ let
     graphics.enable32Bit = true;  
   } else if systemSettings.nixosVersion <= "2405" then {
     opengl.enable = true;
-    opengl.driSupport = true;
+    #opengl.driSupport = true;
     opengl.driSupport32Bit = true;
   } else {};
 

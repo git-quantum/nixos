@@ -1,4 +1,4 @@
-{
+{userSettings, ...} : {
     # Enable all recommended configuration for System76 systems
     hardware.system76.enableAll = true;
     
@@ -6,5 +6,5 @@
     services.power-profiles-daemon.enable = false;
 
     ## User must take part of the 'adm' group for system76 hardware
-    users.users.quantum.extraGroups = [ "adm" ];
+    users.users.${userSettings.username}.extraGroups = [ "adm" ];
 }

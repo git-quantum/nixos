@@ -1,7 +1,7 @@
 {
   networking = {
     hostName = "laptop-system76";
-    wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
   };
 
