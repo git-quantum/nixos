@@ -72,9 +72,9 @@
         ${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ 
-	    ./hosts/laptops/system76/home.nix 
-            #./systemSettings.profilePath/home.nix
-	  ];
+	          # ./hosts/laptops/system76/home.nix 
+            "${systemSettings.profilePath}/home.nix"
+	        ];
         };
       };
     };
