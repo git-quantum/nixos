@@ -1,9 +1,9 @@
-{ config, pkgs, username, modulesPath, ... }:
+{ config, pkgs, username, userSettings, ... }:
 
 {
 
   imports = [ 
-    modulesPath
+    "${userSettings.userModulesPath}"
     # ../../../modules/home-manager/configuration
   ];
 
