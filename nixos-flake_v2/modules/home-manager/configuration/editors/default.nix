@@ -41,10 +41,20 @@
       };
     };
 
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-    }];
+    # LANGUAGE CONFIGURATION
+    languages = {
+      language = [{
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+        language-servers = [ "nil" ];
+      }];
+
+      # LSP CONFIGURATION
+      language-servers = { nil.command = "${pkgs.nixd}/bin/nixd"; };
+    };
+
+    # NEEDED PACKAGES
+    extraPackages = with pkgs; [ nil nixd ];
   };
 }
