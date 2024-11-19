@@ -41,7 +41,8 @@
         nixpkgs.legacyPackages.${systemSettings.system}; # Mandatory argument now: https://nix-community.github.io/home-manager/release-notes.xhtml#sec-release-22.11-highlights
       lib = nixpkgs.lib;
 
-    in {
+    in
+    {
 
       systemHostname = systemSettings.hostname;
 
@@ -49,7 +50,10 @@
       nixosConfigurations = {
         ${systemSettings.hostname} = lib.nixosSystem {
           system = systemSettings.system;
-          modules = [ "${systemSettings.profilePath}/configuration.nix" ];
+          modules = [
+            # "${systemSettings.profilePath}/configuration.nix" 
+            (systemSettings.profilePath + /configuration.nix)
+          ];
 
           specialArgs = {
             inherit inputs;
@@ -64,7 +68,9 @@
         ${userSettings.username} =
           inputs.home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            modules = [ "${systemSettings.profilePath}/home.nix" ];
+            modules = [
+              (systemSettings.profilePath + /home.nix)
+            ];
 
             extraSpecialArgs = {
               inherit inputs;
