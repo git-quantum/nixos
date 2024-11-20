@@ -7,7 +7,7 @@
     ./nix
     ./packages
     ./security
-    # ./shell
+    ./shell
     ./stateVersion
     ./timezone
   ];

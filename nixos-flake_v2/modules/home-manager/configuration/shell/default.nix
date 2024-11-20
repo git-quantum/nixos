@@ -3,7 +3,7 @@ let
   customAliases = {
     ll = "ls -l";
     la = "ls -la";
-    test = "zsh ?";
+    test = "echo 'test zsh ?'";
 
   };
 
