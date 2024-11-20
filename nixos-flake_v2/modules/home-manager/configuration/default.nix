@@ -1,6 +1,6 @@
-{
+{ userSettings, ... }: {
   imports = [
     ./editors
-    # ./shell
+    ./shell
   ];
 }

@@ -1,7 +1,6 @@
-{pkgs, ...}:
+{ pkgs, userSettings, ... }:
 {
-  # Set zsh shell by default
-  environment.shells = with pkgs; [ zsh ];
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
+  # Set shell by default
+  environment.shells = with pkgs; [ bashInteractive zsh ];
+  users.defaultUserShell = with pkgs;if userSettings.shell != "bash" then zsh else bash;
 }

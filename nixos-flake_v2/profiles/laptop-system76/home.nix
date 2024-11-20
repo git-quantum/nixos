@@ -1,4 +1,4 @@
-{ config, pkgs, username, userSettings, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
 
@@ -75,7 +75,7 @@
   #
   #  /etc/profiles/per-user/hopaq/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "helix"; };
+  home.sessionVariables = { EDITOR = userSettings.editor; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

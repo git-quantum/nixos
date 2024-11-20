@@ -28,9 +28,10 @@
         username = "hoaq";
         mail = "quentinhr@pm.me";
         dotfilesDir = /home/${username}/.config;
-        theme = "";
+        theme = "solarized-dark";
         font = "";
-        editor = "";
+        shell = "bash";
+        editor = "helix";
         userModulesPath = ./modules/home-manager/configuration;
         wm = "";
         desktop = "kdew"; # A desktop defined from the desktop directory
