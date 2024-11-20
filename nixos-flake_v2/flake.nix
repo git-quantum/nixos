@@ -16,8 +16,7 @@
         nixosVersion = "2411";
         system = "x86_64-linux";
         hostname = "hortus";
-        profile =
-          "laptop-system76"; # A profile defined from the profile directory
+        profile = "laptop-system76"; # A profile defined from the profile directory
         profilePath = ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
         systemModulesPath = ./modules/nixos;

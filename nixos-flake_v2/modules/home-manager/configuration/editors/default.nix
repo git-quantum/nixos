@@ -51,10 +51,10 @@
       }];
 
       # LSP CONFIGURATION
-      language-servers = { nil.command = "${pkgs.nixd}/bin/nixd"; };
+      language-servers = { nil.command = "${pkgs.nil}/bin/nil"; };
     };
 
     # NEEDED PACKAGES
-    extraPackages = with pkgs; [ nil nixd ];
+    extraPackages = with pkgs; [ nil ];
   };
 }
