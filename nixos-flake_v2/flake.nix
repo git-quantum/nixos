@@ -28,7 +28,7 @@
         username = "hoaq";
         mail = "quentinhr@pm.me";
         dotfilesDir = /home/${username}/.config;
-        theme = "solarized-dark";
+        theme = "Solarized_Dark";
         font = "";
         shell = "bash";
         editor = "helix";
