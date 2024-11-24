@@ -1,4 +1,4 @@
-{ systemSettings, ... }:
+{ pkgs, systemSettings, ... }:
 let
   kdeDesktop = {
     services = {
