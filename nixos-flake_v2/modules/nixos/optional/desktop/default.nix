@@ -17,6 +17,13 @@ let
         desktopManager.gnome.enable = true;
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      gnomeExtensions.just-perfection
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.caffeine
+      gnomeExtensions.appindicator
+    ];
   };
 
 in
