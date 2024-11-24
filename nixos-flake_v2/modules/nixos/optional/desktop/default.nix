@@ -7,17 +7,19 @@ let
       desktopManager.plasma6.enable = false;
     };
   };
+
+  gnomeDesktop = {
+    services = {
+      xserver = {
+        enable = true;
+        # Gnome
+        displayManager.gdm.enable = true;
+        desktopManager.gnome.enable = true;
+      };
+    };
+  };
+
 in
 {
-  gnomeDesktop =
-    if systemSettings.desktop == "gnome" then {
-      services = {
-        xserver = {
-          enable = true;
-          # Gnome
-          displayManager.gdm.enable = true;
-          desktopManager.gnome.enable = true;
-        };
-      };
-    } else kdeDesktop;
+  config = if systemSettings.desktop == "gnome" then gnomeDesktop else kdeDesktop;
 }

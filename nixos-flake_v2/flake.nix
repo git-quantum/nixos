@@ -20,7 +20,7 @@
         profilePath = ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
         systemModulesPath = ./modules/nixos;
-        desktop = "kdew"; # A desktop defined from the desktop directory
+        desktop = "gnome"; # A desktop defined from the desktop directory
 
       };
 
