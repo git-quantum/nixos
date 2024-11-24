@@ -20,6 +20,7 @@
         profilePath = ./profiles/${profile};
         gpuType = "nvidia"; # Choose weither "amd" or "nvidia"
         systemModulesPath = ./modules/nixos;
+        desktop = "kdew"; # A desktop defined from the desktop directory
 
       };
 
@@ -34,7 +35,6 @@
         editor = "helix";
         userModulesPath = ./modules/home-manager/configuration;
         wm = "";
-        desktop = "kdew"; # A desktop defined from the desktop directory
       };
 
       pkgs =
