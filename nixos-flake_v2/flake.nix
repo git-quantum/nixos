@@ -27,7 +27,7 @@
       ########### USER
       userSettings = rec {
         username = "hoaq";
-        mail = "quentinhr@pm.me";
+        mail = "";
         dotfilesDir = /home/${username}/.config;
         theme = "Solarized_Dark";
         font = "";
